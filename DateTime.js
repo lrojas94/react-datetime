@@ -29,7 +29,8 @@ var Datetime = createClass({
 		open: TYPES.bool,
 		strictParsing: TYPES.bool,
 		closeOnSelect: TYPES.bool,
-		closeOnTab: TYPES.bool
+		closeOnTab: TYPES.bool,
+		closeButton: TYPES.bool
 	},
 
 	getDefaultProps: function() {
@@ -382,6 +383,14 @@ var Datetime = createClass({
 		return m;
 	},
 
+	renderCloseBtn: function () {
+		if (!this.props.closeButton) {
+			return '';
+		}
+
+		return React.createElement('div', { key: 'cbtn', className: 'rdtCloseBtn', onClick: this.closeCalendar }, 'Close');
+	},
+
 	componentProps: {
 		fromProps: ['value', 'isValidDate', 'renderDay', 'renderMonth', 'renderYear', 'timeConstraints'],
 		fromState: ['viewDate', 'selectedDate', 'updateOn'],
@@ -439,9 +448,10 @@ var Datetime = createClass({
 
 		return React.createElement( 'div', { className: className }, children.concat(
 			React.createElement( 'div',
-				{ key: 'dt', className: 'rdtPicker' },
-				React.createElement( CalendarContainer, { view: this.state.currentView, viewProps: this.getComponentProps(), onClickOutside: this.handleClickOutside })
-			)
+				{ key: 'dt', className: 'rdtPicker' }, [
+					React.createElement( CalendarContainer, { key: 'ccont', view: this.state.currentView, viewProps: this.getComponentProps(), onClickOutside: this.handleClickOutside }),
+					this.renderCloseBtn()
+				])
 		));
 	}
 });

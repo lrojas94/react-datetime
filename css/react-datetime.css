@@ -211,3 +211,13 @@ td.rdtYear:hover {
   font-size: 1.2em;
   margin-top: 37px;
 }
+
+.rdtCloseBtn {
+  text-align: center;
+  padding: 5px;
+}
+
+.rdtCloseBtn:hover {
+  background: #eeeeee;
+  cursor: pointer;
+}

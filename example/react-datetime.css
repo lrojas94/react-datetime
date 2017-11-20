@@ -220,3 +220,13 @@ td.rdtYear:hover {
 .rdtDayPart {
   margin-top: 43px;
 }
+
+.rdtCloseBtn {
+  text-align: center;
+  padding: 5px;
+}
+
+.rdtCloseBtn:hover {
+  background: #eeeeee;
+  cursor: pointer;
+}
