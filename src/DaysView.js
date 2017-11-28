@@ -136,8 +136,8 @@ var DateTimePickerDays = onClickOutside( createClass({
 		return 1;
 	},
 
-	handleClickOutside: function() {
-		this.props.handleClickOutside();
+	handleClickOutside: function(e) {
+		this.props.handleClickOutside(e);
 	}
 }));
 

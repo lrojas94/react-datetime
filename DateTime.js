@@ -366,7 +366,12 @@ var Datetime = createClass({
 		});
 	},
 
-	handleClickOutside: function() {
+	handleClickOutside: function(e) {
+		if (e.target.id === 'rdt-cbtn') {
+			// Clicked close button, ignore
+			return;
+		}
+
 		if ( this.props.input && this.state.open && !this.props.open ) {
 			this.setState({ open: false }, function() {
 				this.props.onBlur( this.state.selectedDate || this.state.inputValue );
@@ -388,7 +393,7 @@ var Datetime = createClass({
 			return '';
 		}
 
-		return React.createElement('div', { key: 'cbtn', className: 'rdtCloseBtn', onClick: this.closeCalendar }, 'Close');
+		return React.createElement('div', { key: 'rtd-cbtn', className: 'rdtCloseBtn', id: 'rdt-cbtn', onClick: this.closeCalendar }, 'Close');
 	},
 
 	componentProps: {
